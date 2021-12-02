@@ -1,6 +1,6 @@
 {
   "name": "@svackages/lazy-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
@@ -27,6 +27,13 @@
     "svelte2tsx": "^0.4.10",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/svackages/lazy-action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/svackages/lazy-action/issues"
   },
   "type": "module"
 }
