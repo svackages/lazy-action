@@ -1,5 +1,10 @@
 <script lang="ts">
-    import lazy from '$lib/index';
+    import lazy, {newObserver} from '$lib/index';
+
+    // You can overwrite the standard obeserver with the values you want
+    newObserver({
+        rootMargin: '70px 0px',
+    });
 </script>
 
 <h1>Welcome to the lazy-action svackage</h1>

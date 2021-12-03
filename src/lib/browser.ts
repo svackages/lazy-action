@@ -1,7 +1,5 @@
-import { browser } from '$app/env';
 import { createObserver } from './shared';
 
-let observer: IntersectionObserver;
 let nodeList: Array<IntersectType> = [];
 
 const callback: IntersectCallbackType = (node) => {
@@ -9,12 +7,9 @@ const callback: IntersectCallbackType = (node) => {
     nodeList = nodeList.filter(nodeEntry => nodeEntry !== node)
 };
 
-if (browser) {
-    observer = createObserver({callback});
-}
+let observer = createObserver({callback});
 
 const lazyLoad = (node: IntersectType): IActionReturn<IntersectType> => {
-    if (!browser) return;
     observer.observe(node);
     nodeList.push(node);
     return {
@@ -27,10 +22,7 @@ const lazyLoad = (node: IntersectType): IActionReturn<IntersectType> => {
 export default lazyLoad;
 
 export const newObserver = (options: IntersectionObserverInit = {}): void => {
-    if (!browser) return;
-    if (observer) {
-        observer.disconnect();
-    }
+    if (observer) observer.disconnect();
     observer = createObserver({options, callback});
     nodeList.forEach((node) => observer.observe(node));
 }

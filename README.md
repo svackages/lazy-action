@@ -17,10 +17,38 @@ And of course it is fully typed 😉
 npm i @svackages/lazy-action
 ```
 
-### Use in svelte component
+### Use in svelte component (svelte-kit only)
 ```html
 <script>
-    import lazy from '@svackages/lazy-action';
+    import lazy, {newObserver} from '@svackages/lazy-action';
+
+    // You can overwrite the standard
+    // obeserver with the values you want
+    newObserver({
+        rootMargin: '70px 0px',
+    });
+</script>
+
+<img
+    use:lazy
+    data-src="https://picsum.photos/200/300"
+    alt="something random" />
+
+<iframe
+    use:lazy
+    data-src="https://reitzner.at"
+    title="my website"></iframe>
+```
+### Use in svelte component (outside svelte-kit)
+```html
+<script>
+    import lazy, {newObserver} from '@svackages/lazy-action/browser';
+
+    // You can overwrite the standard
+    // obeserver with the values you want
+    newObserver({
+        rootMargin: '70px 0px',
+    });
 </script>
 
 <img
